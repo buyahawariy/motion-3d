@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Gerak Studio</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23C4633F%22/%3E%3Cg%20stroke%3D%22%23FAF9F5%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.75%22%3E%3Cpath%20d%3D%22M8%2024h10%22/%3E%3Cpath%20d%3D%22M5%2032h12%22/%3E%3Cpath%20d%3D%22M8%2040h10%22/%3E%3C/g%3E%3Cg%20stroke%3D%22%23FAF9F5%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M38%2017v30%22/%3E%3Cpath%20d%3D%22M38%2017v30%22%20transform%3D%22rotate%2845%2038%2032%29%22/%3E%3Cpath%20d%3D%22M38%2017v30%22%20transform%3D%22rotate%2890%2038%2032%29%22/%3E%3Cpath%20d%3D%22M38%2017v30%22%20transform%3D%22rotate%28135%2038%2032%29%22/%3E%3C/g%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Figtree:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <style>
 :root{--bg:#F0EEE6;--card:#FAF9F5;--ink:#191919;--mut:#6B6A64;--ln:#DDD9CC;--rec:#C4633F;--sun:#E8B86A;--ok:#5B7D3F;--hf:Newsreader,Georgia,serif;--f:Figtree,system-ui,sans-serif}
@@ -69,6 +69,24 @@ h1 span{display:inline-block;opacity:0;transform:translateY(.45em);animation:up 
 .lg{width:34px;height:34px;flex:none}.lg.xl{width:72px;height:72px;margin-bottom:14px}footer .lg{width:28px;height:28px}
 .sg{transform-box:fill-box;transform-origin:center;animation:spin 14s linear infinite}.ln2 path{animation:slide 1.6s ease-in-out infinite alternate}.ln2 path:nth-child(2){animation-delay:-.5s}.ln2 path:nth-child(3){animation-delay:-1s}
 @keyframes slide{to{transform:translateX(-4px)}}ol.c{padding-left:20px;margin:10px 0}
+
+body.ap-on{--bg:#E9EFFE;--card:#fff;--ink:#0E1A3D;--mut:#5E6E93;--ln:#D3DEF8;--rec:#3B5FE6;--sun:#C9D7FF;--ok:#1E8E5A;--f:"Plus Jakarta Sans",system-ui,sans-serif;--hf:var(--f);font-family:var(--f)}
+@media(prefers-color-scheme:dark){body.ap-on{--bg:#0B1226;--card:#121B38;--ink:#E8EEFF;--mut:#9AA9D1;--ln:#26335E;--sun:#26335E}}
+body.ap-on nav,body.ap-on footer{display:none}body.ap-on h1,body.ap-on h2,body.ap-on h3{font-weight:800;letter-spacing:0}
+#v-app{max-width:540px;padding:18px 16px 40px}.ah{display:flex;gap:12px;align-items:center}.at{flex:1;min-width:0}
+.ai{width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,#4F7BFF,#2F4FD8);display:grid;place-items:center;flex:none}.ai svg{width:26px;height:26px}
+.ah h1{font-size:23px}.ah p{margin:2px 0 0;font-size:14px;color:var(--mut)}.hi{margin:14px 0 12px;font-size:14px}.btn.sm{padding:7px 12px;font-size:13px;border-radius:12px}
+.sg{display:flex;gap:4px;background:#DCE5FC;border-radius:18px;padding:5px;margin:0 0 14px;overflow-x:auto}
+@media(prefers-color-scheme:dark){.sg{background:#1A2547}}
+.sg button{flex:1;border:0;background:none;color:var(--mut);font:700 14px var(--f);padding:11px 8px;border-radius:14px;cursor:pointer;white-space:nowrap}
+.sg .on{background:var(--card);color:var(--ink);box-shadow:0 2px 8px rgba(40,70,160,.15)}
+#v-app .card{border-radius:24px;padding:20px}.dd{position:relative;margin:6px 0 14px}
+.ddb{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:var(--card);color:var(--ink);border:1.5px solid var(--ln);border-radius:18px;padding:14px 16px;font:inherit;cursor:pointer}
+.ddb span{min-width:0;display:grid}.ddb b,.ddl b{font-size:17px}.ddb small,.ddl small{color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
+.ddl{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--card);border:1.5px solid var(--ln);border-radius:18px;box-shadow:0 14px 34px rgba(30,50,120,.18);max-height:300px;overflow:auto}
+.ddl li{display:grid;padding:10px 12px;border-radius:12px;cursor:pointer}.ddl li:hover,.ddl li[aria-selected=true]{background:var(--bg)}
+.pill{background:var(--bg);border-radius:16px;padding:14px 16px;margin-top:10px}.skp{max-height:380px;overflow:auto}.skp pre{max-height:300px;overflow:auto}
+.kb{background:var(--bg);border-radius:16px;padding:14px;margin-bottom:16px}.kb input{background:var(--card);margin:6px 0}.kb small{display:block;margin-top:6px;color:var(--mut)}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#C4633F"/><g stroke="#FAF9F5" stroke-width="3.5" stroke-linecap="round" opacity=".75"><path d="M8 24h10"/><path d="M5 32h12"/><path d="M8 40h10"/></g><g stroke="#FAF9F5" stroke-width="5" stroke-linecap="round"><path d="M38 17v30"/><path d="M38 17v30" transform="rotate(45 38 32)"/><path d="M38 17v30" transform="rotate(90 38 32)"/><path d="M38 17v30" transform="rotate(135 38 32)"/></g></symbol><symbol id="sp" viewBox="-50 -50 100 100"><g stroke="currentColor" stroke-width="9" stroke-linecap="round"><path d="M0-42V42"/><path d="M0-42V42" transform="rotate(45)"/><path d="M0-42V42" transform="rotate(90)"/><path d="M0-42V42" transform="rotate(135)"/></g></symbol></svg>
 <nav><a class="brand" href="#"><svg class="lg" aria-hidden="true"><use href="#lg"/></svg><span class="bn"></span></a>
@@ -81,7 +99,7 @@ h1 span{display:inline-block;opacity:0;transform:translateY(.45em);animation:up 
 <svg class="lg xl" viewBox="0 0 64 64" role="img" aria-label="Gerak Studio"><rect width="64" height="64" rx="16" fill="#C4633F"/><g class="ln2" stroke="#FAF9F5" stroke-width="3.5" stroke-linecap="round" opacity=".75"><path d="M8 24h10"/><path d="M5 32h12"/><path d="M8 40h10"/></g><g class="sg" stroke="#FAF9F5" stroke-width="5" stroke-linecap="round"><path d="M38 17v30"/><path d="M38 17v30" transform="rotate(45 38 32)"/><path d="M38 17v30" transform="rotate(90 38 32)"/><path d="M38 17v30" transform="rotate(135 38 32)"/></g></svg>
 <h1>Ubah naskah jadi video vertikal, bersama Claude.</h1>
 <p class="mut">Pilih skill, tonton contohnya, lalu buat narasi suara Indonesia. Semua di satu tempat. Bayar sekali, tanpa langganan bulanan.</p>
-<div class="row" style="margin-top:18px"><a class="btn p" href="#masuk" id="heroBtn">Beli Pro</a><a class="btn" href="#fitur">Lihat fitur</a></div>
+<div class="row" style="margin-top:18px"><a class="btn p buy" target="_blank" rel="noopener">Beli Pro</a><a class="btn" href="#fitur">Lihat fitur</a></div>
 <p id="promoLine" hidden style="margin-top:14px"><span class="tag" id="promoTag"></span></p></div>
 <div class="stage"><div class="phone" id="demo"><div><svg class="spark big" aria-hidden="true"><use href="#sp"/></svg><br>Video contoh tampil di sini</div></div>
 <span class="chip c1">Caption</span><span class="chip c2">Musik</span><span class="chip c3">SFX</span>
@@ -92,32 +110,34 @@ h1 span{display:inline-block;opacity:0;transform:translateY(.45em);animation:up 
 <div class="card"><h3>Narator AI</h3><p class="mut">Ketik naskah, pilih suara dan gaya bicara, unduh hasilnya sebagai WAV.</p></div>
 <div class="card"><h3>Program affiliasi</h3><p class="mut">Bagikan link kamu dan terima komisi <span class="ap"></span>% dari tiap pembelian Pro.</p></div></div></section>
 <section class="s" id="harga"><h2>Satu paket, bayar sekali</h2><div class="g3">
-<div class="card"><h3>Pro</h3><div class="price" id="price"></div><ul class="c"><li>Sekali bayar, tanpa langganan</li><li>Semua skill dan video contoh</li><li>Narator AI</li><li>Grup khusus Pro</li></ul><a class="btn p" href="#masuk">Beli Pro</a></div>
-<div class="card"><h3>Cara beli</h3><ol class="c"><li>Buat akun dengan email.</li><li>Tekan Ajukan Pro, transfer, lalu kirim bukti bayar ke admin lewat WhatsApp.</li><li>Admin menyetujui dan akunmu langsung aktif.</li></ol></div></div></section>
-<section class="s" id="affinfo"><h2>Ajak teman, dapat komisi <span class="ap"></span>%</h2>
-<p class="mut" style="max-width:56ch">Daftar sebagai affiliate di dalam akunmu. Setelah disetujui admin, kamu mendapat kode dan link unik. Setiap teman yang daftar lewat link itu lalu membeli Pro, komisimu tercatat otomatis.</p>
-<a class="btn p" href="#masuk">Gabung affiliasi</a></section></main>
+<div class="card"><h3>Pro</h3><div class="price" id="price"></div><ul class="c"><li>Sekali bayar, tanpa langganan</li><li>Semua skill dan video contoh</li><li>Narator AI</li><li>Grup khusus Pro</li></ul><a class="btn p buy" target="_blank" rel="noopener">Beli Pro</a></div>
+<div class="card"><h3>Cara beli</h3><ol class="c"><li>Tekan Beli Pro untuk chat admin lewat WhatsApp.</li><li>Transfer dan kirim bukti bayar.</li><li>Admin membuatkan akunmu dan mengirim email serta kata sandi.</li><li>Masuk, lalu pilih skill.</li></ol></div></div></section>
+<section class="s" id="affinfo"><h2>Ajak teman, dapat komisi <span class="ap"></span>%</h2><p class="mut" style="max-width:56ch">Member bisa mendaftar sebagai affiliate di dalam akunnya. Setelah disetujui admin, kamu mendapat kode dan link unik. Teman yang membeli Pro lewat linkmu mencatatkan komisi untukmu.</p><a class="btn p" href="#masuk">Masuk untuk gabung</a></section></main>
 <footer><svg class="lg" aria-hidden="true"><use href="#lg"/></svg><br>&copy; <span class="bn"></span></footer>
 
 <main id="v-masuk" class="w" hidden><div class="card panel">
-<div class="seg" id="aTab"><button class="on" data-m="in" type="button">Masuk</button><button data-m="up" type="button">Daftar</button></div>
+<h3>Masuk member</h3><p class="mut" style="margin:6px 0 14px">Akun dibuat admin setelah pembelian.</p>
 <label for="em">Email</label><input id="em" type="email" autocomplete="email">
 <label for="pw">Kata sandi</label><input id="pw" type="password" minlength="8" autocomplete="current-password">
 <div class="row"><button class="btn p" id="aGo" type="button">Masuk</button><button class="btn" id="aRs" type="button">Lupa sandi</button></div>
 <p class="msg" id="aMsg" aria-live="polite"></p></div></main>
 
 <main id="v-app" class="w" hidden>
-<div class="row" style="margin:14px 0"><h2 style="margin-right:auto">Halo, <span id="uN"></span></h2><span class="tag" id="plTag"></span></div>
-<div class="seg" id="tabs"><button class="on" data-t="skill" type="button">Skill</button><button data-t="nar" type="button">Narator AI</button><button data-t="aff" type="button">Affiliasi</button></div>
-<div id="lock" class="card" hidden><h3>Aktifkan Pro untuk mulai</h3><p class="mut">Skill dan Narator terbuka setelah pembayaran disetujui admin. <b id="lkPrice"></b> Setelah transfer, kirim bukti bayar lewat WhatsApp.</p>
-<div class="row"><button class="btn p" id="reqPro" type="button">Ajukan Pro</button><a class="btn" id="waBtn" target="_blank" rel="noopener">Chat admin</a></div><p class="msg" id="lkMsg"></p></div>
+<div class="ah"><div class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#fff"/></svg></div><div class="at"><h1><span class="bn"></span></h1><p>Skill Claude, contoh video, dan narator AI</p></div><button class="btn sm" id="out2" type="button">Keluar</button></div>
+<p class="hi">Halo, <b id="uN"></b> <span class="tag" id="plTag"></span></p>
+<div class="sg" id="tabs"><button class="on" data-t="skill" type="button">Skill</button><button data-t="nar" type="button">Narator AI</button><button data-t="aff" type="button">Affiliasi</button><button data-t="adm" id="tabAdm" type="button" hidden>Admin</button></div>
+<div id="lock" class="card" hidden><h3>Akunmu belum aktif</h3><p class="mut">Akses Pro belum aktif atau sudah berakhir. Hubungi admin untuk mengaktifkan. <b id="lkPrice"></b></p><div class="row"><a class="btn p" id="waBtn" target="_blank" rel="noopener">Chat admin</a></div></div>
 
-<div id="t-skill"><div class="seg" id="skSeg"></div><div class="card skl" id="skBox"></div></div>
-<div id="t-nar" hidden><div class="card"><h3>Suara</h3><div class="vg" id="vg"></div>
+<div id="t-skill"><div class="card"><label id="pl">Pilih skill</label>
+<div class="dd"><button class="ddb" id="ddB" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="pl"><span><b id="ddN"></b><small id="ddD"></small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="ddl" id="ddL" role="listbox" hidden></ul></div>
+<div class="sg" id="skTabs"><button class="on" data-k="sum" type="button">Ringkasan</button><button data-k="vid" type="button">Video</button><button data-k="use" type="button">Cara pakai</button><button data-k="md" type="button">Isi</button></div>
+<div class="skp" id="skP"></div></div></div>
+<div id="t-nar" hidden><div class="card"><div class="kb"><label for="gk">API key Google AI Studio</label><div class="row"><input id="gk" type="password" placeholder="Tempel key di sini" autocomplete="off" style="flex:1;margin:6px 0"><button class="btn p" id="gkS" type="button">Simpan</button><button class="btn" id="gkD" type="button">Hapus</button></div><small id="gkN"></small></div><h3>Suara</h3><div class="vg" id="vg"></div>
 <label for="sty">Gaya bicara</label><input id="sty" type="text" value="Santai dan bercerita">
 <label for="txt">Naskah</label><textarea id="txt" maxlength="1500">Pernah heran kenapa kartu tol tanpa baterai bisa membuka palang dalam sekejap?</textarea>
 <small class="mut" id="cn"></small><div class="row" style="margin-top:10px"><button class="btn p" id="gen" type="button">Buat suara</button></div>
 <div id="nOut" aria-live="polite" style="margin-top:12px"></div></div></div>
+<div id="t-adm" hidden><div class="card"><h3>Tambah member</h3><label for="mE">Email pembeli</label><input id="mE" type="email"><label for="mP">Kata sandi awal</label><div class="row"><input id="mP" type="text" style="flex:1;margin:0"><button class="btn" id="mG" type="button">Acak</button></div><label for="mR" style="display:block;margin-top:12px">Kode referral (opsional)</label><input id="mR" type="text"><label><input type="checkbox" id="mPr" style="width:auto;margin:0 6px 0 0">Harga promo</label><div class="row" style="margin-top:12px"><button class="btn p" id="mAdd" type="button">Buat akun member</button></div><p class="msg" id="mMsg" aria-live="polite"></p></div><div class="card" style="margin-top:14px"><h3>Member</h3><div id="mList">Memuat...</div></div></div>
 <div id="t-aff" hidden><div class="card" id="affBox">Memuat...</div></div></main>
 
 <script>
@@ -155,40 +175,73 @@ function planOf(u){const am=u.app_metadata||{};if(am.plan==="pro"){const t=am.pr
 /* router */
 function route(){let h=location.hash.slice(1);if(/access_token=|type=/.test(h)){history.replaceState(null,"",location.pathname+"#app");h="app"}
 if(h==="app"&&!user)h="masuk";if(h==="masuk"&&user)h="app";
-$("#v-home").hidden=!["","harga","fitur","affinfo"].includes(h);$("#v-masuk").hidden=h!=="masuk";$("#v-app").hidden=h!=="app";
+$("#v-home").hidden=!["","harga","fitur","affinfo"].includes(h);$("#v-masuk").hidden=h!=="masuk";$("#v-app").hidden=h!=="app";document.body.classList.toggle("ap-on",h==="app");
 if(h==="app")renderApp();const el=h&&document.getElementById(h);if(el&&!$("#v-home").hidden)el.scrollIntoView();
-$("#navA").textContent=user?"Buka aplikasi":"Masuk";$("#navA").href=user?"#app":"#masuk";$("#out").hidden=!user;$("#heroBtn").href=user?"#app":"#masuk"}
+$("#navA").textContent=user?"Buka aplikasi":"Masuk";$("#navA").href=user?"#app":"#masuk";$("#out").hidden=!user}
 addEventListener("hashchange",route);
-if(sb){sb.auth.getSession().then(r=>{user=r.data.session?r.data.session.user:null;route()});sb.auth.onAuthStateChange((_e,s)=>{user=s?s.user:null;route()})}else route();
-$("#out").onclick=async()=>{await sb.auth.signOut();location.hash=""};
+if(sb){sb.auth.getSession().then(r=>{user=r.data.session?r.data.session.user:null;route()});sb.auth.onAuthStateChange((ev,s)=>{user=s?s.user:null;if(!user)window._adm=0;route();if(ev==="PASSWORD_RECOVERY")setTimeout(async()=>{const np=prompt("Buat kata sandi baru (minimal 8 karakter):");if(np&&np.length>=8){const r=await sb.auth.updateUser({password:np});toast(r.error?r.error.message:"Kata sandi diperbarui.")}},300)})}else route();
+const doOut=async()=>{await sb.auth.signOut();location.hash=""};$("#out").onclick=doOut;$("#out2").onclick=doOut;
 
 /* login */
-let mode="in";const aMsg=(t,e)=>{$("#aMsg").textContent=t;$("#aMsg").className="msg "+(e?"err":"okm")};
-$("#aTab").onclick=e=>{const b=e.target.closest("button");if(!b)return;mode=b.dataset.m;[...$("#aTab").children].forEach(x=>x.classList.toggle("on",x===b));$("#aGo").textContent=mode==="in"?"Masuk":"Buat akun";$("#pw").autocomplete=mode==="in"?"current-password":"new-password"};
+const aMsg=(t,e)=>{$("#aMsg").textContent=t;$("#aMsg").className="msg "+(e?"err":"okm")};
 $("#aGo").onclick=async()=>{if(!sb)return aMsg("Supabase belum diisi di CONFIG.",1);const email=$("#em").value.trim(),pw=$("#pw").value;
-if(!email||pw.length<8)return aMsg("Isi email dan kata sandi minimal 8 karakter.",1);const b=$("#aGo");b.disabled=true;aMsg("Memproses...");
-const r=mode==="in"?await sb.auth.signInWithPassword({email,password:pw}):await sb.auth.signUp({email,password:pw,options:{data:{ref:store.get("ref")},emailRedirectTo:location.origin+"/#app"}});
-b.disabled=false;if(r.error)return aMsg(r.error.message,1);
-if(mode==="up"&&!r.data.session)return aMsg("Akun dibuat. Cek email untuk verifikasi, lalu masuk.");aMsg("")};
-$("#aRs").onclick=async()=>{const email=$("#em").value.trim();if(!sb||!email)return aMsg("Isi email dulu.",1);const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+"/#app"});aMsg(r.error?r.error.message:"Tautan reset sandi dikirim ke email.",!!r.error)};
+if(!email||!pw)return aMsg("Isi email dan kata sandi.",1);const b=$("#aGo");b.disabled=true;aMsg("Memproses...");
+const r=await sb.auth.signInWithPassword({email,password:pw});b.disabled=false;
+if(r.error)return aMsg(/invalid/i.test(r.error.message)?"Email atau kata sandi salah. Akun dibuat admin setelah pembelian.":r.error.message,1);aMsg("")};
+$("#aRs").onclick=async()=>{const email=$("#em").value.trim();if(!sb||!email)return aMsg("Isi email dulu.",1);const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+"/#app"});aMsg(r.error?r.error.message:"Jika email terdaftar, tautan reset sandi dikirim.",!!r.error)};
+const buyUrl=()=>C.WA?"https://wa.me/"+C.WA+"?text="+encodeURIComponent("Halo admin "+C.BRAND+", saya mau beli Pro."+(store.get("ref")?" Kode referral: "+store.get("ref"):"")):"#masuk";
+document.querySelectorAll(".buy").forEach(a=>a.href=buyUrl());
+async function adm(b){const {data}=await sb.auth.getSession();const r=await fetch("/api/admin",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+data.session.access_token},body:JSON.stringify(b)});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"Server membalas "+r.status);return j}
+async function admLoad(){const m=$("#mList");try{const j=await adm({action:"overview"});m.innerHTML=j.users.slice(0,100).map(u=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--ln);padding:8px 0"><span>${esc(u.email)}<br><small class="mut">${esc(u.plan)}${u.promo?" promo":""}</small></span>${u.plan==="pro"?`<button class="btn" data-r="${esc(u.id)}" type="button">Cabut</button>`:""}</div>`).join("")||"Belum ada member."}catch(e){m.innerHTML=`<span class="err">${esc(e.message)}</span>`}}
+$("#mList").onclick=async e=>{const b=e.target.closest("[data-r]");if(!b||!confirm("Cabut akses Pro member ini?"))return;try{await adm({action:"revoke",user_id:b.dataset.r});admLoad()}catch(x){toast(x.message)}};
+$("#mG").onclick=()=>{const c="abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789",a=crypto.getRandomValues(new Uint8Array(10));$("#mP").value=[...a].map(n=>c[n%c.length]).join("")};
+$("#mAdd").onclick=async()=>{const m=$("#mMsg"),email=$("#mE").value.trim(),pw=$("#mP").value.trim(),b=$("#mAdd");if(!email||pw.length<8){m.className="msg err";m.textContent="Isi email dan kata sandi minimal 8 karakter.";return}
+b.disabled=true;m.className="msg";m.textContent="Membuat akun...";
+try{const j=await adm({action:"create_member",email,password:pw,ref:$("#mR").value.trim(),promo:$("#mPr").checked});const t="Akun "+C.BRAND+"\nLogin: "+location.origin+"\nEmail: "+email+"\nKata sandi: "+pw;
+m.className="msg okm";m.innerHTML="Akun dibuat."+(j.komisi?" "+esc(j.komisi)+".":"")+' <button class="btn" id="mCp" type="button">Salin info login</button>';$("#mCp").onclick=()=>copy(t);$("#mE").value=$("#mP").value=$("#mR").value="";admLoad()}
+catch(e){m.className="msg err";m.textContent=e.message}b.disabled=false};
 
 /* aplikasi */
-let tab="skill",curSk=SKILLS[0];
+let tab="skill";
 function renderApp(){const p=planOf(user),um=user.user_metadata||{};$("#uN").textContent=um.full_name||user.email.split("@")[0];
-$("#plTag").textContent=p==="pro"?"Pro aktif":p==="expired"?"Pro berakhir":"Belum aktif";$("#lock").hidden=p==="pro";$("#lkPrice").textContent=PROMO?"Harga promo "+rp(C.PROMO)+".":"Harga "+rp(C.PRICE)+".";
+$("#plTag").textContent=p==="pro"?"Pro aktif":p==="expired"?"Pro berakhir":"Belum aktif";$("#lock").hidden=p==="pro";if(!window._adm){window._adm=1;adm({action:"whoami"}).then(()=>{$("#tabAdm").hidden=false}).catch(()=>{})}$("#lkPrice").textContent=PROMO?"Harga promo "+rp(C.PROMO)+".":"Harga "+rp(C.PRICE)+".";
 $("#waBtn").hidden=!C.WA;if(C.WA)$("#waBtn").href="https://wa.me/"+C.WA+"?text="+encodeURIComponent("Halo admin "+C.BRAND+", saya mau beli Pro ("+user.email+").");
 showTab(tab)}
-function showTab(t){tab=t;const p=planOf(user),locked=p!=="pro"&&t!=="aff";[...$("#tabs").children].forEach(b=>b.classList.toggle("on",b.dataset.t===t));
-$("#t-skill").hidden=t!=="skill"||locked;$("#t-nar").hidden=t!=="nar"||locked;$("#t-aff").hidden=t!=="aff";if(t==="aff")affLoad();if(t==="skill")drawSk();if(t==="nar")drawVoices()}
+function showTab(t){tab=t;const p=planOf(user),locked=p!=="pro"&&t!=="aff"&&t!=="adm";[...$("#tabs").children].forEach(b=>b.classList.toggle("on",b.dataset.t===t));
+$("#t-skill").hidden=t!=="skill"||locked;$("#t-nar").hidden=t!=="nar"||locked;$("#t-aff").hidden=t!=="aff";$("#t-adm").hidden=t!=="adm";if(t==="adm")admLoad();if(t==="aff")affLoad();if(t==="skill")drawSk();if(t==="nar")drawVoices()}
 $("#tabs").onclick=e=>{const b=e.target.closest("button");if(b)showTab(b.dataset.t)};
-$("#reqPro").onclick=async()=>{const m=$("#lkMsg");m.className="msg";m.textContent="Mengirim...";const r=await sb.from("pro_requests").insert({user_id:user.id,email:user.email,note:"via web"});
-m.className="msg "+(r.error&&r.error.code!=="23505"?"err":"okm");m.textContent=r.error?(r.error.code==="23505"?"Pengajuan sudah masuk. Tunggu admin menyetujui.":"Gagal mengirim. Coba lagi atau chat admin."):"Pengajuan terkirim. Kirim bukti bayar ke admin."};
 
 /* skill */
-function drawSk(){$("#skSeg").innerHTML=SKILLS.map(s=>`<button type="button" data-i="${esc(s.id)}" class="${s.id===curSk.id?"on":""}">${esc(s.name)}</button>`).join("");
-const s=curSk;$("#skBox").innerHTML=`<div class="vbox">${yt(s.yt)||'<p style="color:#fff;padding:10px">Video belum diisi</p>'}</div><div><h3>${esc(s.name)}</h3><p class="mut">${esc(s.desc)}</p><ul class="c">${s.pts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p><b>Cara pakai</b></p><pre>${esc(s.use)}</pre><div class="row"><a class="btn p" href="${esc(s.file)}" download="SKILL.md">Unduh SKILL.md</a><button class="btn" id="cpSk" type="button">Salin isi</button></div></div>`;
-$("#cpSk").onclick=async()=>{try{const r=await fetch(s.file);if(!r.ok)throw 0;copy(await r.text())}catch(e){toast("File skill belum tersedia.")}}}
-$("#skSeg").onclick=e=>{const b=e.target.closest("button");if(!b)return;curSk=SKILLS.find(s=>s.id===b.dataset.i);drawSk()};
+let curSk=SKILLS[0],skTab="sum";const mdC={};
+const ddClose=()=>{$("#ddL").hidden=true;$("#ddB").setAttribute("aria-expanded","false")};
+function drawSk(){$("#ddN").textContent=curSk.name;$("#ddD").textContent=curSk.desc;
+$("#ddL").innerHTML=SKILLS.map(s=>`<li role="option" tabindex="0" data-i="${esc(s.id)}" aria-selected="${s.id===curSk.id}"><b>${esc(s.name)}</b><small>${esc(s.desc)}</small></li>`).join("");
+[...$("#skTabs").children].forEach(b=>b.classList.toggle("on",b.dataset.k===skTab));drawPane()}
+async function drawPane(){const s=curSk,p=$("#skP");
+if(skTab==="sum"){p.innerHTML=`<p style="margin:0 0 4px">${esc(s.desc)}</p>`+s.pts.map(x=>`<div class="pill">${esc(x)}</div>`).join("")}
+else if(skTab==="vid"){p.innerHTML=`<div class="vbox" style="margin:0 auto">${yt(s.yt)||'<p style="color:#fff;padding:12px">Video belum ditambahkan.</p>'}</div>`}
+else if(skTab==="use"){p.innerHTML=`<p style="margin:0 0 8px">Tambahkan skill ke Claude, lalu kirim perintah ini:</p><pre>${esc(s.use)}</pre><button class="btn" id="cpU" type="button">Salin perintah</button>`;$("#cpU").onclick=()=>copy(s.use)}
+else{p.innerHTML=`<div class="row" style="margin-bottom:10px"><a class="btn p" href="${esc(s.file)}" download="SKILL.md">Unduh SKILL.md</a><button class="btn" id="cpM" type="button">Salin isi</button></div><pre id="mdP">Memuat...</pre>`;
+let t=mdC[s.id];if(t==null){try{const r=await fetch(s.file);if(!r.ok)throw 0;t=await r.text();mdC[s.id]=t}catch(e){t=""}}
+if(curSk!==s||skTab!=="md")return;$("#mdP").textContent=t||"File skill belum tersedia.";$("#cpM").onclick=()=>t?copy(t):toast("File skill belum tersedia.")}}
+$("#ddB").onclick=()=>{const o=$("#ddL").hidden;$("#ddL").hidden=!o;$("#ddB").setAttribute("aria-expanded",String(o))};
+$("#ddL").onclick=e=>{const li=e.target.closest("li");if(!li)return;curSk=SKILLS.find(x=>x.id===li.dataset.i);ddClose();drawSk()};
+$("#ddL").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.target.click()}};
+document.addEventListener("click",e=>{if(!e.target.closest(".dd"))ddClose()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")ddClose()});
+$("#skTabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;skTab=b.dataset.k;drawSk()};
+
+/* API key Google AI Studio milik member (disimpan di browser, dikirim langsung ke Google) */
+let GK=store.get("gkey");
+function gkUi(){$("#gkN").innerHTML=GK?`Key tersimpan di perangkat ini (berakhiran <b>${esc(GK.slice(-4))}</b>) dan dikirim langsung ke Google, tidak lewat server kami.`:`Belum ada key. Ambil gratis di <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>, lalu tempel di sini.`;$("#gkD").hidden=!GK}
+$("#gkS").onclick=()=>{const k=$("#gk").value.trim();if(k.length<20||/\s/.test(k)){toast("Key tidak valid.");return}GK=k;$("#gk").value="";toast(store.set("gkey",k)?"Key disimpan.":"Browser memblokir penyimpanan. Key hanya berlaku sampai halaman ditutup.");gkUi()};
+$("#gkD").onclick=()=>{GK="";try{localStorage.removeItem("gkey")}catch(e){}gkUi();toast("Key dihapus.")};gkUi();
+async function ttsCall(text,voice,style){
+if(GK){const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":GK},body:JSON.stringify({contents:[{parts:[{text:style?"Bacakan dalam bahasa Indonesia dengan gaya "+style+": "+text:text}]}],generationConfig:{responseModalities:["AUDIO"],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:voice}}}}})});
+const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error((j.error&&j.error.message)||"Google membalas "+r.status);
+const p=((((j.candidates||[])[0]||{}).content||{}).parts||[]).find(x=>x.inlineData);if(!p)throw new Error("Respons tidak berisi audio. Coba ubah teks.");return p.inlineData.data}
+const {data}=await sb.auth.getSession();const r=await fetch("/api/tts",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+data.session.access_token},body:JSON.stringify({text,voice,style})});
+const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"Server membalas "+r.status);return j.audio}
 
 /* narator (lewat /api/tts, key Gemini hanya di server) */
 let voice="Orus",au=null,lastUrl="";
@@ -198,12 +251,10 @@ const cnt=()=>{const t=$("#txt").value.trim(),w=t?t.split(/\s+/).length:0;$("#cn
 const wav=(pcm,rate=24000)=>{const h=new DataView(new ArrayBuffer(44)),s=(o,t)=>[...t].forEach((c,i)=>h.setUint8(o+i,c.charCodeAt(0)));s(0,"RIFF");h.setUint32(4,36+pcm.length,true);s(8,"WAVEfmt ");h.setUint32(16,16,true);h.setUint16(20,1,true);h.setUint16(22,1,true);h.setUint32(24,rate,true);h.setUint32(28,rate*2,true);h.setUint16(32,2,true);h.setUint16(34,16,true);s(36,"data");h.setUint32(40,pcm.length,true);return new Blob([h,pcm],{type:"audio/wav"})};
 $("#gen").onclick=async()=>{const text=$("#txt").value.trim(),o=$("#nOut"),b=$("#gen");if(!text){o.innerHTML='<span class="err">Tulis naskah dulu.</span>';return}
 b.disabled=true;b.textContent="Membuat suara...";o.textContent="";
-try{const {data}=await sb.auth.getSession();const r=await fetch("/api/tts",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+data.session.access_token},body:JSON.stringify({text,voice,style:$("#sty").value.trim()})});
-const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"Server membalas "+r.status);
-const bin=atob(j.audio),pcm=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)pcm[i]=bin.charCodeAt(i);
+try{const bin=atob(await ttsCall(text,voice,$("#sty").value.trim())),pcm=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)pcm[i]=bin.charCodeAt(i);
 if(lastUrl)URL.revokeObjectURL(lastUrl);lastUrl=URL.createObjectURL(wav(pcm));
 o.innerHTML=`<b>Selesai. Suara ${esc(voice)}</b><audio controls src="${lastUrl}" style="width:100%;margin:8px 0"></audio><a class="btn" href="${lastUrl}" download="narasi-${esc(voice)}.wav">Unduh WAV</a>`}
-catch(e){o.innerHTML=`<span class="err">Gagal membuat suara: ${esc(e.message)}</span>`}
+catch(e){o.innerHTML=`<span class="err">Gagal membuat suara: ${esc(!GK&&/environment|belum lengkap/i.test(e.message)?"Masukkan API key Google AI Studio-mu di atas.":e.message)}</span>`}
 b.disabled=false;b.textContent="Buat suara"};
 
 /* affiliasi */
