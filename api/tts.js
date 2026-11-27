@@ -4,7 +4,7 @@ const ANON = process.env.SUPABASE_ANON_KEY || "";
 const KEY = process.env.GEMINI_API_KEY || "";
 const MODEL = process.env.TTS_MODEL || "gemini-2.5-flash-preview-tts";
 const DAY = 864e5;
-const VOICES = ["Orus", "Kore", "Puck", "Charon", "Fenrir", "Aoede"];
+const VOICES = ["Zephyr", "Puck", "Charon", "Kore", "Fenrir", "Leda", "Orus", "Aoede", "Callirrhoe", "Autonoe", "Enceladus", "Iapetus", "Umbriel", "Algieba", "Despina", "Erinome", "Algenib", "Rasalgethi", "Laomedeia", "Achernar", "Alnilam", "Schedar", "Gacrux", "Pulcherrima", "Achird", "Zubenelgenubi", "Vindemiatrix", "Sadachbia", "Sadaltager", "Sulafat"];
 
 function active(u) {
   const am = u.app_metadata || {};
