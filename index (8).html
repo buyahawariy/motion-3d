@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gerak Studio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23C4633F%22/%3E%3Cg%20stroke%3D%22%23FAF9F5%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.75%22%3E%3Cpath%20d%3D%22M8%2024h10%22/%3E%3Cpath%20d%3D%22M5%2032h12%22/%3E%3Cpath%20d%3D%22M8%2040h10%22/%3E%3C/g%3E%3Cg%20stroke%3D%22%23FAF9F5%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M38%2017v30%22/%3E%3Cpath%20d%3D%22M38%2017v30%22%20transform%3D%22rotate%2845%2038%2032%29%22/%3E%3Cpath%20d%3D%22M38%2017v30%22%20transform%3D%22rotate%2890%2038%2032%29%22/%3E%3Cpath%20d%3D%22M38%2017v30%22%20transform%3D%22rotate%28135%2038%2032%29%22/%3E%3C/g%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Figtree:wght@400;500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<style>
+:root{--bg:#F0EEE6;--card:#FAF9F5;--ink:#191919;--mut:#6B6A64;--ln:#DDD9CC;--rec:#C4633F;--sun:#E8B86A;--ok:#5B7D3F;--hf:Newsreader,Georgia,serif;--f:Figtree,system-ui,sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#1F1E1D;--card:#2A2927;--ink:#F0EEE6;--mut:#A8A69C;--ln:#3D3B37}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--f)}
+h1,h2,h3{font-family:var(--hf);line-height:1.08;margin:0}
+h1{font-size:clamp(34px,6vw,56px);letter-spacing:-.02em}h2{font-size:clamp(26px,4vw,34px)}h3{font-size:19px}
+a{color:inherit}.w{max-width:1000px;margin:auto;padding:0 18px}.mut{color:var(--mut)}
+:focus-visible{outline:3px solid var(--rec);outline-offset:2px}
+nav{display:flex;align-items:center;gap:14px;padding:14px 18px;max-width:1000px;margin:auto}
+nav .brand{font:800 20px var(--hf);text-decoration:none;display:flex;gap:8px;align-items:center;margin-right:auto}
+nav .dot{width:12px;height:12px;border-radius:50%;background:var(--rec)}nav a.lk{text-decoration:none;font-weight:500}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--card);color:var(--ink);font:700 15px var(--f);padding:10px 18px;border-radius:10px;cursor:pointer;text-decoration:none}
+.btn.p{background:var(--rec);border-color:var(--rec);color:#fff}.btn:disabled{opacity:.55;cursor:wait}
+.hero{display:grid;gap:32px;padding:36px 0 56px;align-items:center}
+@media(min-width:800px){.hero{grid-template-columns:1.2fr 1fr}}
+.hero p{font-size:18px;max-width:46ch}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.phone{width:min(260px,70vw);aspect-ratio:9/16;margin:auto;border:8px solid var(--ink);border-radius:30px;overflow:hidden;background:#000;display:grid;place-items:center;color:#fff;text-align:center;font-size:13px;padding:10px}
+.phone iframe,.vbox iframe{width:100%;height:100%;border:0}
+section.s{padding:44px 0;border-top:2px solid var(--ln)}
+.g3{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}
+.card{background:var(--card);border:2px solid var(--ln);border-radius:14px;padding:18px}
+.price{font:800 34px var(--hf);margin:6px 0}.price s{font-size:18px;color:var(--mut);margin-right:6px}
+.tag{display:inline-block;background:var(--sun);color:#2b2100;font-weight:700;font-size:13px;padding:3px 10px;border-radius:99px}
+ul.c{padding-left:18px;margin:10px 0}
+.panel{max-width:440px;margin:30px auto}input,textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--ln);border-radius:10px;padding:10px 12px;margin:4px 0 12px}
+label{font-weight:700;font-size:14px}textarea{min-height:120px;resize:vertical}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}.seg button{border:2px solid var(--ln);background:var(--card);color:var(--ink);font:700 14px var(--f);padding:8px 14px;border-radius:99px;cursor:pointer}
+.seg .on{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.msg{min-height:22px;font-size:14px}.err{color:var(--rec);font-weight:700}.okm{color:var(--ok);font-weight:700}
+.vbox{aspect-ratio:9/16;width:min(220px,60vw);border-radius:14px;overflow:hidden;background:#000}
+.skl{display:flex;gap:18px;flex-wrap:wrap}.skl>div{flex:1;min-width:230px}
+pre{background:#0C1A20;color:#E7F0F3;padding:10px 12px;border-radius:10px;white-space:pre-wrap;font-size:13px}
+.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.vg .v{display:flex;border:2px solid var(--ln);border-radius:10px;overflow:hidden}.vg .v.on{border-color:var(--rec)}
+.vg .v>button{border:0;background:none;color:var(--ink);font:inherit;padding:8px;cursor:pointer;text-align:left}.vg .v>button:first-child{flex:1}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;z-index:9}
+footer{padding:30px 18px;text-align:center;color:var(--mut);font-size:14px}
+
+h1,h2,h3{font-weight:500;letter-spacing:-.015em}nav .brand{font-size:22px}.btn{border-radius:12px}
+.spark{width:22px;height:22px;color:var(--rec);animation:spin 16s linear infinite}.spark.big{width:58px;height:58px;margin-bottom:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero{position:relative}.hero:before{content:"";position:absolute;right:-60px;top:-30px;width:460px;height:460px;background:radial-gradient(closest-side,rgba(196,99,63,.25),transparent);animation:drift 11s ease-in-out infinite alternate;z-index:-1}
+@keyframes drift{to{transform:translate(-50px,40px) scale(1.15)}}
+h1 span{display:inline-block;opacity:0;transform:translateY(.45em);animation:up .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*70ms)}
+@keyframes up{to{opacity:1;transform:none}}
+.stage{position:relative;display:grid;justify-items:center}.stage .phone{background:linear-gradient(160deg,#3a3835,#191919);margin:0}
+.chat{position:relative;z-index:2;margin-top:-56px;width:100%;max-width:340px;background:var(--card);border:1.5px solid var(--ln);border-radius:18px;padding:14px;box-shadow:0 22px 50px rgba(25,25,25,.16)}
+.chat .u{background:var(--bg);border-radius:12px;padding:10px 12px;font-size:14px;min-height:62px}
+.caret{display:inline-block;width:2px;height:1.05em;background:var(--rec);vertical-align:-2px;margin-left:1px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.steps{margin:10px 0 0;padding:0;display:grid;gap:6px;font-size:14px}
+.steps li{list-style:none;display:flex;gap:8px;align-items:center;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+.steps li.on{opacity:1;transform:none}.steps li:before{content:"";width:16px;height:16px;border-radius:50%;background:var(--ok);flex:none}
+.chip{position:absolute;background:var(--card);border:1.5px solid var(--ln);border-radius:99px;padding:5px 13px;font-weight:700;font-size:13px;animation:bob 4s ease-in-out infinite;z-index:3}
+.c1{top:6%;left:4%}.c2{top:34%;right:2%;animation-delay:-1.3s}.c3{top:56%;left:0;animation-delay:-2.6s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.marq{overflow:hidden;border-block:1.5px solid var(--ln);padding:12px 0;margin-bottom:10px}
+.mt{display:flex;gap:40px;width:max-content;animation:mq 32s linear infinite;font:500 24px var(--hf)}.mt span:after{content:"\2733";color:var(--rec);margin-left:40px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 span,.rv,.steps li{opacity:1!important;transform:none!important}}
+.lg{width:34px;height:34px;flex:none}.lg.xl{width:72px;height:72px;margin-bottom:14px}footer .lg{width:28px;height:28px}
+.lsg{transform-box:fill-box;transform-origin:center;animation:spin 14s linear infinite}.ln2 path{animation:slide 1.6s ease-in-out infinite alternate}.ln2 path:nth-child(2){animation-delay:-.5s}.ln2 path:nth-child(3){animation-delay:-1s}
+@keyframes slide{to{transform:translateX(-4px)}}ol.c{padding-left:20px;margin:10px 0}
+
+body.ap-on{--bg:#E9EFFE;--card:#fff;--ink:#0E1A3D;--mut:#5E6E93;--ln:#D3DEF8;--rec:#3B5FE6;--sun:#C9D7FF;--ok:#1E8E5A;--f:"Plus Jakarta Sans",system-ui,sans-serif;--hf:var(--f);font-family:var(--f)}
+@media(prefers-color-scheme:dark){body.ap-on{--bg:#0B1226;--card:#121B38;--ink:#E8EEFF;--mut:#9AA9D1;--ln:#26335E;--sun:#26335E}}
+body.ap-on nav,body.ap-on footer{display:none}body.ap-on h1,body.ap-on h2,body.ap-on h3{font-weight:800;letter-spacing:0}
+#v-app{max-width:540px;padding:18px 16px 40px}.ah{display:flex;gap:12px;align-items:center}.at{flex:1;min-width:0}
+.ai{width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,#4F7BFF,#2F4FD8);display:grid;place-items:center;flex:none}.ai svg{width:26px;height:26px}
+.ah h1{font-size:23px}.ah p{margin:2px 0 0;font-size:14px;color:var(--mut)}.hi{margin:14px 0 12px;font-size:14px}.btn.sm{padding:7px 12px;font-size:13px;border-radius:12px}
+.sg{display:flex;gap:4px;background:#DCE5FC;border-radius:18px;padding:5px;margin:0 0 14px;overflow-x:auto}
+@media(prefers-color-scheme:dark){.sg{background:#1A2547}}
+.sg button{flex:1;border:0;background:none;color:var(--mut);font:700 14px var(--f);padding:11px 8px;border-radius:14px;cursor:pointer;white-space:nowrap}
+.sg .on{background:var(--card);color:var(--ink);box-shadow:0 2px 8px rgba(40,70,160,.15)}
+#v-app .card{border-radius:24px;padding:20px}.dd{position:relative;margin:6px 0 14px}
+.ddb{width:100%;display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;background:var(--card);color:var(--ink);border:1.5px solid var(--ln);border-radius:18px;padding:14px 16px;font:inherit;cursor:pointer}
+.ddb span{min-width:0;display:grid}.ddb b,.ddl b{font-size:17px}.ddb small,.ddl small{color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}
+.ddl{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;background:var(--card);border:1.5px solid var(--ln);border-radius:18px;box-shadow:0 14px 34px rgba(30,50,120,.18);max-height:300px;overflow:auto}
+.ddl li{display:grid;padding:10px 12px;border-radius:12px;cursor:pointer}.ddl li:hover,.ddl li[aria-selected=true]{background:var(--bg)}
+.pill{background:var(--bg);border-radius:16px;padding:14px 16px;margin-top:10px}.skp{max-height:380px;overflow:auto}.skp pre{max-height:300px;overflow:auto}
+.kb{background:var(--bg);border-radius:16px;padding:14px;margin-bottom:16px}.kb input{background:var(--card);margin:6px 0}.kb small{display:block;margin-top:6px;color:var(--mut)}
+.g2{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:14px}
+details{border:1.5px solid var(--ln);border-radius:16px;padding:12px 16px;margin-top:10px;background:var(--card)}details summary{font-weight:700;cursor:pointer}details p,details ol{margin:8px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px}.ec{border:1.5px solid var(--ln);background:var(--card);color:var(--ink);border-radius:99px;padding:7px 13px;font:600 13px var(--f);cursor:pointer}.ec.on{background:var(--rec);border-color:var(--rec);color:#fff}
+.ddl .vo{display:flex;justify-content:space-between;align-items:center;gap:8px}.ddl .vo span{display:grid;min-width:0}.ddl .gh{display:block;font:700 12px var(--f);text-transform:uppercase;letter-spacing:.04em;color:var(--mut);padding:12px 12px 4px;cursor:default}.ddl .gh:hover{background:none}
+.pl{border:1.5px solid var(--ln);background:var(--card);color:var(--ink);border-radius:99px;padding:5px 12px;cursor:pointer;font-size:13px}#vdL{max-height:340px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#C4633F"/><g stroke="#FAF9F5" stroke-width="3.5" stroke-linecap="round" opacity=".75"><path d="M8 24h10"/><path d="M5 32h12"/><path d="M8 40h10"/></g><g stroke="#FAF9F5" stroke-width="5" stroke-linecap="round"><path d="M38 17v30"/><path d="M38 17v30" transform="rotate(45 38 32)"/><path d="M38 17v30" transform="rotate(90 38 32)"/><path d="M38 17v30" transform="rotate(135 38 32)"/></g></symbol><symbol id="sp" viewBox="-50 -50 100 100"><g stroke="currentColor" stroke-width="9" stroke-linecap="round"><path d="M0-42V42"/><path d="M0-42V42" transform="rotate(45)"/><path d="M0-42V42" transform="rotate(90)"/><path d="M0-42V42" transform="rotate(135)"/></g></symbol></svg>
+<nav><a class="brand" href="#"><svg class="lg" aria-hidden="true"><use href="#lg"/></svg><span class="bn"></span></a>
+<a class="lk" href="#harga">Harga</a><a class="lk" href="#affinfo">Affiliasi</a>
+<a class="btn" id="navA" href="#masuk">Masuk</a><button class="btn" id="out" hidden type="button">Keluar</button></nav>
+<div id="cfgW" class="w err" hidden>Isi SB_URL dan SB_KEY di bagian CONFIG pada index.html agar login aktif.</div>
+
+<main id="v-home" class="w">
+<div class="hero"><div>
+<svg class="lg xl" viewBox="0 0 64 64" role="img" aria-label="Gerak Studio"><rect width="64" height="64" rx="16" fill="#C4633F"/><g class="ln2" stroke="#FAF9F5" stroke-width="3.5" stroke-linecap="round" opacity=".75"><path d="M8 24h10"/><path d="M5 32h12"/><path d="M8 40h10"/></g><g class="lsg" stroke="#FAF9F5" stroke-width="5" stroke-linecap="round"><path d="M38 17v30"/><path d="M38 17v30" transform="rotate(45 38 32)"/><path d="M38 17v30" transform="rotate(90 38 32)"/><path d="M38 17v30" transform="rotate(135 38 32)"/></g></svg>
+<h1>Ubah naskah jadi video vertikal, bersama Claude.</h1>
+<p class="mut">Pilih skill, tonton contohnya, lalu buat narasi suara Indonesia. Semua di satu tempat. Bayar sekali, tanpa langganan bulanan.</p>
+<div class="row" style="margin-top:18px"><a class="btn p buy" target="_blank" rel="noopener">Beli Pro</a><a class="btn" href="#fitur">Lihat fitur</a></div>
+<p id="promoLine" hidden style="margin-top:14px"><span class="tag" id="promoTag"></span></p></div>
+<div class="stage"><div class="phone" id="demo"><div><svg class="spark big" aria-hidden="true"><use href="#sp"/></svg><br>Video contoh tampil di sini</div></div>
+<span class="chip c1">Caption</span><span class="chip c2">Musik</span><span class="chip c3">SFX</span>
+<div class="chat" aria-hidden="true"><div class="u" id="tU"></div><ul class="steps" id="tS"></ul></div></div></div>
+<div class="marq" aria-hidden="true"><div class="mt"><span>Bedah 3D</span><span>Pixel 8-bit</span><span>Papan tulis</span><span>Peta kuno</span><span>Infografis</span><span>Narator AI</span><span>Bedah 3D</span><span>Pixel 8-bit</span><span>Papan tulis</span><span>Peta kuno</span><span>Infografis</span><span>Narator AI</span></div></div>
+<section class="s" id="fitur"><h2>Tiga alat dalam satu halaman</h2><div class="g3">
+<div class="card"><h3>Galeri skill</h3><p class="mut">Tiap skill punya ringkasan, video contoh, dan file SKILL.md yang bisa diunduh.</p></div>
+<div class="card"><h3>Narator AI</h3><p class="mut">Ketik naskah, pilih suara dan gaya bicara, unduh hasilnya sebagai WAV.</p></div>
+<div class="card"><h3>Program affiliasi</h3><p class="mut">Bagikan link kamu dan terima komisi <span class="ap"></span>% dari tiap pembelian Pro.</p></div></div></section>
+<section class="s" id="harga"><h2>Satu paket, bayar sekali</h2><div class="g3">
+<div class="card"><h3>Pro</h3><div class="price" id="price"></div><ul class="c"><li>Sekali bayar, tanpa langganan</li><li>Semua skill dan video contoh</li><li>Narator AI</li><li>Grup khusus Pro</li></ul><a class="btn p buy" target="_blank" rel="noopener">Beli Pro</a></div>
+<div class="card"><h3>Cara beli</h3><ol class="c"><li>Tekan Beli Pro untuk chat admin lewat WhatsApp.</li><li>Transfer dan kirim bukti bayar.</li><li>Admin membuatkan akunmu dan mengirim email serta kata sandi.</li><li>Masuk, lalu pilih skill.</li></ol></div></div></section>
+<section class="s" id="affinfo"><h2>Ajak teman, dapat komisi <span class="ap"></span>%</h2><p class="mut" style="max-width:56ch">Member bisa mendaftar sebagai affiliate di dalam akunnya. Setelah disetujui admin, kamu mendapat kode dan link unik. Teman yang membeli Pro lewat linkmu mencatatkan komisi untukmu.</p><a class="btn p" href="#masuk">Masuk untuk gabung</a></section></main>
+<footer><svg class="lg" aria-hidden="true"><use href="#lg"/></svg><br>&copy; <span class="bn"></span></footer>
+
+<main id="v-masuk" class="w" hidden><div class="card panel">
+<h3>Masuk member</h3><p class="mut" style="margin:6px 0 14px">Akun dibuat admin setelah pembelian.</p>
+<label for="em">Email</label><input id="em" type="email" autocomplete="email">
+<label for="pw">Kata sandi</label><input id="pw" type="password" minlength="8" autocomplete="current-password">
+<div class="row"><button class="btn p" id="aGo" type="button">Masuk</button><button class="btn" id="aRs" type="button">Lupa sandi</button></div>
+<p class="msg" id="aMsg" aria-live="polite"></p></div></main>
+
+<main id="v-app" class="w" hidden>
+<div class="ah"><div class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#fff"/></svg></div><div class="at"><h1><span class="bn"></span></h1><p>Skill Claude, contoh video, dan narator AI</p></div><button class="btn sm" id="out2" type="button">Keluar</button></div>
+<p class="hi"><span id="gr">Halo</span>, <b id="uN"></b> <span class="tag" id="plTag"></span></p>
+<div class="sg" id="tabs"><button class="on" data-t="home" type="button">Beranda</button><button data-t="skill" type="button">Skill</button><button data-t="nar" type="button">Narator</button><button data-t="aff" type="button">Affiliasi</button><button data-t="tut" type="button">Tutorial</button><button data-t="adm" id="tabAdm" type="button" hidden>Admin</button></div>
+<div id="lock" class="card" hidden><h3>Akunmu belum aktif</h3><p class="mut">Akses Pro belum aktif atau sudah berakhir. Hubungi admin untuk mengaktifkan. <b id="lkPrice"></b></p><div class="row"><a class="btn p" id="waBtn" target="_blank" rel="noopener">Chat admin</a></div></div>
+
+<div id="t-home"><div class="card"><h3>Selamat datang di <span class="bn"></span></h3><p class="mut" id="hiT" style="margin:6px 0 0"></p></div>
+<div class="card" id="waG" hidden style="margin-top:14px"><h3>Grup WhatsApp member</h3><p class="mut">Diskusi, info skill baru, dan tanya jawab bersama member lain.</p><a class="btn p" id="waGb" target="_blank" rel="noopener">Gabung grup</a></div>
+<div class="g2"><button class="btn" data-go="skill" type="button">Buka Skill</button><button class="btn" data-go="nar" type="button">Buat narasi suara</button><button class="btn" data-go="aff" type="button">Program affiliasi</button><button class="btn" data-go="tut" type="button">Lihat tutorial</button></div></div>
+<div id="t-tut" hidden><div class="card"><h3>Tutorial</h3><p class="mut" style="margin:6px 0 0">Panduan singkat dari awal sampai video jadi.</p><div class="vbox" id="tutV" style="margin:14px auto" hidden></div>
+<details open><summary>1. Pilih skill dan tonton contohnya</summary><p>Buka tab Skill, pilih skill di dropdown, lalu lihat sub-tab Ringkasan dan Video.</p></details>
+<details><summary>2. Pasang skill di Claude</summary><p>Di sub-tab Isi, tekan Unduh SKILL.md lalu tambahkan sebagai skill di Claude (letak menunya bisa berbeda sesuai versi aplikasi). Setelah itu kirim perintah dari sub-tab Cara pakai.</p></details>
+<details><summary>3. Ambil API key Google AI Studio</summary><ol class="c"><li>Buka <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> dan masuk dengan akun Google.</li><li>Klik Create API key, lalu salin key-nya.</li><li>Di tab Narator, tempel di kolom API key dan tekan Simpan.</li></ol><p class="mut">Key disimpan di browsermu dan dikirim langsung ke Google.</p></details>
+<details><summary>4. Buat narasi suara</summary><p>Di tab Narator pilih suara, isi gaya bicara dan naskah, lalu tekan Buat suara. Hasilnya bisa diunduh sebagai WAV.</p></details>
+<details><summary>5. Render video</summary><p>Ikuti tahap di skill yang kamu pilih. Unggah rekaman suara ke Claude agar dirender menjadi video vertikal 9:16.</p></details>
+<details><summary>6. Ajak teman lewat affiliasi</summary><p>Di tab Affiliasi, daftar dan tunggu persetujuan admin. Setelah disetujui, bagikan link unikmu dan dapatkan komisi dari tiap pembelian Pro.</p></details></div></div>
+<div id="t-skill"><div class="card"><label id="pl">Pilih skill</label>
+<div class="dd"><button class="ddb" id="ddB" type="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="pl"><span><b id="ddN"></b><small id="ddD"></small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="ddl" id="ddL" role="listbox" hidden></ul></div>
+<div class="sg" id="skTabs"><button class="on" data-k="sum" type="button">Ringkasan</button><button data-k="vid" type="button">Video</button><button data-k="use" type="button">Cara pakai</button><button data-k="md" type="button">Isi</button></div>
+<div class="skp" id="skP"></div></div></div>
+<div id="t-nar" hidden><div class="card"><div class="kb"><label for="gk">API key Google AI Studio</label><div class="row"><input id="gk" type="password" placeholder="Tempel key di sini" autocomplete="off" style="flex:1;margin:6px 0"><button class="btn p" id="gkS" type="button">Simpan</button><button class="btn" id="gkD" type="button">Hapus</button></div><small id="gkN"></small></div><h3>Suara</h3><div class="dd" id="vdW"><button class="ddb" id="vdB" type="button" aria-haspopup="listbox" aria-expanded="false"><span><b id="vdN"></b><small id="vdD"></small></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><ul class="ddl" id="vdL" role="listbox" hidden></ul></div>
+<small class="mut">30 suara dari Google. Tekan tombol putar di daftar untuk mendengar contohnya.</small>
+<label style="display:block;margin-top:16px">Ekspresi</label><div class="chips" id="chips"></div>
+<label for="sty">Gaya bicara (bebas, boleh diedit)</label><input id="sty" type="text" value="Santai dan bercerita">
+<label>Kecepatan</label><div class="sg" id="spd"><button data-s="lambat" type="button">Lambat</button><button class="on" data-s="normal" type="button">Normal</button><button data-s="cepat" type="button">Cepat</button></div>
+<label for="txt">Naskah</label><textarea id="txt" maxlength="1500">Pernah heran kenapa kartu tol tanpa baterai bisa membuka palang dalam sekejap?</textarea>
+<small class="mut" id="cn"></small><div class="row" style="margin-top:10px"><button class="btn p" id="gen" type="button">Buat suara</button></div>
+<div id="nOut" aria-live="polite" style="margin-top:12px"></div></div></div>
+<div id="t-adm" hidden><div class="card"><h3>Tambah member</h3><label for="mE">Email pembeli</label><input id="mE" type="email"><label for="mP">Kata sandi awal</label><div class="row"><input id="mP" type="text" style="flex:1;margin:0"><button class="btn" id="mG" type="button">Acak</button></div><label for="mR" style="display:block;margin-top:12px">Kode referral (opsional)</label><input id="mR" type="text"><label><input type="checkbox" id="mPr" style="width:auto;margin:0 6px 0 0">Harga promo</label><div class="row" style="margin-top:12px"><button class="btn p" id="mAdd" type="button">Buat akun member</button></div><p class="msg" id="mMsg" aria-live="polite"></p></div><div class="card" style="margin-top:14px"><h3>Member</h3><div id="mList">Memuat...</div></div></div>
+<div id="t-aff" hidden><div class="card" id="affBox">Memuat...</div></div></main>
+
+<script>
+/* ===== CONFIG: isi dengan project Supabase kamu sendiri ===== */
+const C={BRAND:"Gerak Studio",SB_URL:"https://jgknjfljrnzbpcovwhvy.supabase.co",SB_KEY:"sb_publishable_MtQWDIlrd1WzX8Ax_lJ7Lg_CsVJQBTj",WA:"6289633044451",PRICE:49000,PROMO:25000,AFF:40,DEMO_YT:"",WA_GROUP:"",TUT_YT:"",TTS_MODEL:"gemini-2.5-flash-preview-tts"};
+const SKILLS=[
+{id:"tgv-bedah3d",name:"Bedah 3D",desc:"Video edukasi 9:16 bedah cara kerja benda, gaya 3D X-Ray, dengan SFX dan musik.",yt:"",file:"skills/tgv-bedah3d.md",pts:["5 ide fun fact","Naskah VO satu paragraf","Render MP4 dari rekaman suara"],use:"Pakai skill tgv-bedah3d. Beri aku 5 ide fun fact bedah cara kerja benda sehari-hari."},
+{id:"tgv-pixel-motion",name:"Pixel 8-bit",desc:"Video explainer vertikal gaya retro pixel art dari naskah dan voiceover.",yt:"",file:"skills/tgv-pixel-motion.md",pts:["Kotak dialog RPG","Musik chiptune","Caption tersinkron"],use:"Pakai skill tgv-pixel-motion untuk naskah dan voiceover ini."}];
+const VOICES=[["Orus","mantap"],["Kore","tegas"],["Puck","ceria"],["Charon","informatif"],["Fenrir","semangat"],["Aoede","ringan"]];
+const DAY=864e5,$=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rp=n=>"Rp "+n.toLocaleString("id-ID");
+const store={get(k){try{return localStorage.getItem(k)||""}catch(e){return""}},set(k,v){try{localStorage.setItem(k,v);return true}catch(e){return false}}};
+function toast(t){const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.append(e);setTimeout(()=>e.remove(),2200)}
+async function copy(t){try{await navigator.clipboard.writeText(t);toast("Tersalin")}catch(e){const a=document.createElement("textarea");a.value=t;document.body.append(a);a.select();let ok=false;try{ok=document.execCommand("copy")}catch(_){}a.remove();toast(ok?"Tersalin":"Gagal menyalin, salin manual.")}}
+const ytId=u=>{u=String(u||"").trim();const m=u.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);return m?m[1]:/^[\w-]{11}$/.test(u)?u:""};
+const yt=u=>{const i=ytId(u);return i?`<iframe src="https://www.youtube-nocookie.com/embed/${i}" title="Video contoh" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>`:""};
+const sb=C.SB_URL&&C.SB_KEY&&window.supabase?supabase.createClient(C.SB_URL,C.SB_KEY):null;
+let user=null,PROMO=null;
+document.querySelectorAll(".bn").forEach(e=>e.textContent=C.BRAND);document.title=C.BRAND;
+document.querySelectorAll(".ap").forEach(e=>e.textContent=C.AFF);
+$("#cfgW").hidden=!!sb;$("#price").textContent=rp(C.PRICE);
+if(C.DEMO_YT)$("#demo").innerHTML=yt(C.DEMO_YT);
+
+/* affiliasi: tangkap ?ref= dan catat klik */
+(function(){const p=(new URLSearchParams(location.search).get("ref")||"").toUpperCase();if(!/^[A-Z0-9]{3,20}$/.test(p))return;store.set("ref",p);
+try{if(sessionStorage.getItem("rc"+p))return;sessionStorage.setItem("rc"+p,"1")}catch(e){}
+if(sb)sb.from("aff_clicks").insert({code:p,vid:store.get("vid")}).then(()=>{},()=>{})})();
+/* catat kunjungan */
+(function(){let v=store.get("vid");if(!v){v=crypto.randomUUID();store.set("vid",v)}if(sb)sb.from("visits").insert({vid:v,path:location.pathname,ref:(document.referrer||"").slice(0,200)}).then(()=>{},()=>{})})();
+/* promo */
+fetch("/api/promo").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.quota>0&&j.left>0){PROMO=j;$("#price").innerHTML=`<s>${rp(C.PRICE)}</s>${rp(C.PROMO)}`;$("#promoLine").hidden=false;$("#promoTag").textContent=`Promo ${rp(C.PROMO)}: sisa ${j.left} dari ${j.quota} slot`}}).catch(()=>{});
+
+function planOf(u){const am=u.app_metadata||{};if(am.plan==="pro"){const t=am.pro_until&&new Date(am.pro_until).getTime();return t&&t+DAY<Date.now()?"expired":"pro"}return"free"}
+
+/* router */
+function route(){let h=location.hash.slice(1);if(/access_token=|type=/.test(h)){history.replaceState(null,"",location.pathname+"#app");h="app"}
+if(h==="app"&&!user)h="masuk";if(h==="masuk"&&user)h="app";
+$("#v-home").hidden=!["","harga","fitur","affinfo"].includes(h);$("#v-masuk").hidden=h!=="masuk";$("#v-app").hidden=h!=="app";document.body.classList.toggle("ap-on",h==="app");
+if(h==="app")renderApp();const el=h&&document.getElementById(h);if(el&&!$("#v-home").hidden)el.scrollIntoView();
+$("#navA").textContent=user?"Buka aplikasi":"Masuk";$("#navA").href=user?"#app":"#masuk";$("#out").hidden=!user}
+addEventListener("hashchange",route);
+if(sb){sb.auth.getSession().then(r=>{user=r.data.session?r.data.session.user:null;route()});sb.auth.onAuthStateChange((ev,s)=>{user=s?s.user:null;if(!user)window._adm=0;route();if(ev==="PASSWORD_RECOVERY")setTimeout(async()=>{const np=prompt("Buat kata sandi baru (minimal 8 karakter):");if(np&&np.length>=8){const r=await sb.auth.updateUser({password:np});toast(r.error?r.error.message:"Kata sandi diperbarui.")}},300)})}else route();
+const doOut=async()=>{await sb.auth.signOut();location.hash=""};$("#out").onclick=doOut;$("#out2").onclick=doOut;
+
+/* login */
+const aMsg=(t,e)=>{$("#aMsg").textContent=t;$("#aMsg").className="msg "+(e?"err":"okm")};
+$("#aGo").onclick=async()=>{if(!sb)return aMsg("Supabase belum diisi di CONFIG.",1);const email=$("#em").value.trim(),pw=$("#pw").value;
+if(!email||!pw)return aMsg("Isi email dan kata sandi.",1);const b=$("#aGo");b.disabled=true;aMsg("Memproses...");
+const r=await sb.auth.signInWithPassword({email,password:pw});b.disabled=false;
+if(r.error)return aMsg(/invalid/i.test(r.error.message)?"Email atau kata sandi salah. Akun dibuat admin setelah pembelian.":r.error.message,1);aMsg("")};
+$("#aRs").onclick=async()=>{const email=$("#em").value.trim();if(!sb||!email)return aMsg("Isi email dulu.",1);const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+"/#app"});aMsg(r.error?r.error.message:"Jika email terdaftar, tautan reset sandi dikirim.",!!r.error)};
+const buyUrl=()=>C.WA?"https://wa.me/"+C.WA+"?text="+encodeURIComponent("Halo admin "+C.BRAND+", saya mau beli Pro."+(store.get("ref")?" Kode referral: "+store.get("ref"):"")):"#masuk";
+document.querySelectorAll(".buy").forEach(a=>a.href=buyUrl());
+async function adm(b){const {data}=await sb.auth.getSession();const r=await fetch("/api/admin",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+data.session.access_token},body:JSON.stringify(b)});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"Server membalas "+r.status);return j}
+async function admLoad(){const m=$("#mList");try{const j=await adm({action:"overview"});m.innerHTML=j.users.slice(0,100).map(u=>`<div class="row" style="justify-content:space-between;border-bottom:1px solid var(--ln);padding:8px 0"><span>${esc(u.email)}<br><small class="mut">${esc(u.plan)}${u.promo?" promo":""}</small></span>${u.plan==="pro"?`<button class="btn" data-r="${esc(u.id)}" type="button">Cabut</button>`:""}</div>`).join("")||"Belum ada member."}catch(e){m.innerHTML=`<span class="err">${esc(e.message)}</span>`}}
+$("#mList").onclick=async e=>{const b=e.target.closest("[data-r]");if(!b||!confirm("Cabut akses Pro member ini?"))return;try{await adm({action:"revoke",user_id:b.dataset.r});admLoad()}catch(x){toast(x.message)}};
+$("#mG").onclick=()=>{const c="abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789",a=crypto.getRandomValues(new Uint8Array(10));$("#mP").value=[...a].map(n=>c[n%c.length]).join("")};
+$("#mAdd").onclick=async()=>{const m=$("#mMsg"),email=$("#mE").value.trim(),pw=$("#mP").value.trim(),b=$("#mAdd");if(!email||pw.length<8){m.className="msg err";m.textContent="Isi email dan kata sandi minimal 8 karakter.";return}
+b.disabled=true;m.className="msg";m.textContent="Membuat akun...";
+try{const j=await adm({action:"create_member",email,password:pw,ref:$("#mR").value.trim(),promo:$("#mPr").checked});const t="Akun "+C.BRAND+"\nLogin: "+location.origin+"\nEmail: "+email+"\nKata sandi: "+pw;
+m.className="msg okm";m.innerHTML="Akun dibuat."+(j.komisi?" "+esc(j.komisi)+".":"")+' <button class="btn" id="mCp" type="button">Salin info login</button>';$("#mCp").onclick=()=>copy(t);$("#mE").value=$("#mP").value=$("#mR").value="";admLoad()}
+catch(e){m.className="msg err";m.textContent=e.message}b.disabled=false};
+
+/* aplikasi */
+let tab="home";
+function renderApp(){const p=planOf(user),um=user.user_metadata||{};$("#uN").textContent=um.full_name||user.email.split("@")[0];const hr=new Date().getHours();$("#gr").textContent=hr<11?"Selamat pagi":hr<15?"Selamat siang":hr<19?"Selamat sore":"Selamat malam";const gOk=/^https:\/\/chat\.whatsapp\.com\//.test(C.WA_GROUP||"");$("#waG").hidden=!(p==="pro"&&gOk);if(gOk)$("#waGb").href=C.WA_GROUP;$("#hiT").textContent=p==="pro"?"Akun Pro kamu aktif. Pilih skill atau buat narasi suara untuk memulai.":"Akunmu belum aktif. Hubungi admin untuk mengaktifkan.";
+$("#plTag").textContent=p==="pro"?"Pro aktif":p==="expired"?"Pro berakhir":"Belum aktif";$("#lock").hidden=p==="pro";if(!window._adm){window._adm=1;adm({action:"whoami"}).then(()=>{$("#tabAdm").hidden=false}).catch(()=>{})}$("#lkPrice").textContent=PROMO?"Harga promo "+rp(C.PROMO)+".":"Harga "+rp(C.PRICE)+".";
+$("#waBtn").hidden=!C.WA;if(C.WA)$("#waBtn").href="https://wa.me/"+C.WA+"?text="+encodeURIComponent("Halo admin "+C.BRAND+", saya mau beli Pro ("+user.email+").");
+showTab(tab)}
+function showTab(t){tab=t;const p=planOf(user),locked=p!=="pro"&&!["aff","adm","home","tut"].includes(t);[...$("#tabs").children].forEach(b=>b.classList.toggle("on",b.dataset.t===t));
+$("#t-skill").hidden=t!=="skill"||locked;$("#t-nar").hidden=t!=="nar"||locked;$("#t-aff").hidden=t!=="aff";$("#t-home").hidden=t!=="home";$("#t-tut").hidden=t!=="tut";$("#t-adm").hidden=t!=="adm";if(t==="adm")admLoad();if(t==="aff")affLoad();if(t==="skill")drawSk();if(t==="nar")drawVoices()}
+$("#tabs").onclick=e=>{const b=e.target.closest("button");if(b)showTab(b.dataset.t)};
+$("#t-home").onclick=e=>{const b=e.target.closest("[data-go]");if(b)showTab(b.dataset.go)};
+if(ytId(C.TUT_YT)){$("#tutV").innerHTML=yt(C.TUT_YT);$("#tutV").hidden=false}
+
+/* skill */
+let curSk=SKILLS[0],skTab="sum";const mdC={};
+const ddClose=()=>{$("#ddL").hidden=true;$("#ddB").setAttribute("aria-expanded","false")};
+function drawSk(){$("#ddN").textContent=curSk.name;$("#ddD").textContent=curSk.desc;
+$("#ddL").innerHTML=SKILLS.map(s=>`<li role="option" tabindex="0" data-i="${esc(s.id)}" aria-selected="${s.id===curSk.id}"><b>${esc(s.name)}</b><small>${esc(s.desc)}</small></li>`).join("");
+[...$("#skTabs").children].forEach(b=>b.classList.toggle("on",b.dataset.k===skTab));drawPane()}
+async function drawPane(){const s=curSk,p=$("#skP");
+if(skTab==="sum"){p.innerHTML=`<p style="margin:0 0 4px">${esc(s.desc)}</p>`+s.pts.map(x=>`<div class="pill">${esc(x)}</div>`).join("")}
+else if(skTab==="vid"){p.innerHTML=`<div class="vbox" style="margin:0 auto">${yt(s.yt)||'<p style="color:#fff;padding:12px">Video belum ditambahkan.</p>'}</div>`}
+else if(skTab==="use"){p.innerHTML=`<p style="margin:0 0 8px">Tambahkan skill ke Claude, lalu kirim perintah ini:</p><pre>${esc(s.use)}</pre><button class="btn" id="cpU" type="button">Salin perintah</button>`;$("#cpU").onclick=()=>copy(s.use)}
+else{p.innerHTML=`<div class="row" style="margin-bottom:10px"><a class="btn p" href="${esc(s.file)}" download="SKILL.md">Unduh SKILL.md</a><button class="btn" id="cpM" type="button">Salin isi</button></div><pre id="mdP">Memuat...</pre>`;
+let t=mdC[s.id];if(t==null){try{const r=await fetch(s.file);if(!r.ok)throw 0;t=await r.text();mdC[s.id]=t}catch(e){t=""}}
+if(curSk!==s||skTab!=="md")return;$("#mdP").textContent=t||"File skill belum tersedia.";$("#cpM").onclick=()=>t?copy(t):toast("File skill belum tersedia.")}}
+$("#ddB").onclick=()=>{const o=$("#ddL").hidden;$("#ddL").hidden=!o;$("#ddB").setAttribute("aria-expanded",String(o))};
+$("#ddL").onclick=e=>{const li=e.target.closest("li");if(!li)return;curSk=SKILLS.find(x=>x.id===li.dataset.i);ddClose();drawSk()};
+$("#ddL").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.target.click()}};
+document.addEventListener("click",e=>{if(!e.target.closest(".dd"))ddClose()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")ddClose()});
+$("#skTabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;skTab=b.dataset.k;drawSk()};
+
+/* API key Google AI Studio milik member (disimpan di browser, dikirim langsung ke Google) */
+let GK=store.get("gkey");
+function gkUi(){$("#gkN").innerHTML=GK?`Key tersimpan di perangkat ini (berakhiran <b>${esc(GK.slice(-4))}</b>) dan dikirim langsung ke Google, tidak lewat server kami.`:`Belum ada key. Ambil gratis di <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>, lalu tempel di sini.`;$("#gkD").hidden=!GK}
+$("#gkS").onclick=()=>{const k=$("#gk").value.trim();if(k.length<20||/\s/.test(k)){toast("Key tidak valid.");return}GK=k;$("#gk").value="";toast(store.set("gkey",k)?"Key disimpan.":"Browser memblokir penyimpanan. Key hanya berlaku sampai halaman ditutup.");gkUi()};
+$("#gkD").onclick=()=>{GK="";try{localStorage.removeItem("gkey")}catch(e){}gkUi();toast("Key dihapus.")};gkUi();
+async function ttsCall(text,voice,style){
+if(GK){const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+C.TTS_MODEL+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":GK},body:JSON.stringify({contents:[{parts:[{text:style?"Bacakan dalam bahasa Indonesia dengan gaya "+style+": "+text:text}]}],generationConfig:{responseModalities:["AUDIO"],speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:voice}}}}})});
+const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error((j.error&&j.error.message)||"Google membalas "+r.status);
+const p=((((j.candidates||[])[0]||{}).content||{}).parts||[]).find(x=>x.inlineData);if(!p)throw new Error("Respons tidak berisi audio. Coba ubah teks.");return p.inlineData.data}
+const {data}=await sb.auth.getSession();const r=await fetch("/api/tts",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+data.session.access_token},body:JSON.stringify({text,voice,style})});
+const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||"Server membalas "+r.status);return j.audio}
+
+/* narator (lewat /api/tts, key Gemini hanya di server) */
+const GRP=[["Cerah dan ceria",[["Zephyr","Cerah","Bright"],["Autonoe","Cerah","Bright"],["Puck","Riang","Upbeat"],["Laomedeia","Riang","Upbeat"],["Sadachbia","Lincah","Lively"],["Leda","Muda","Youthful"],["Fenrir","Bersemangat","Excitable"]]],
+["Tegas dan mantap",[["Kore","Tegas","Firm"],["Orus","Tegas","Firm"],["Alnilam","Tegas","Firm"],["Pulcherrima","Lugas","Forward"],["Schedar","Stabil","Even"]]],
+["Informatif dan jernih",[["Charon","Informatif","Informative"],["Rasalgethi","Informatif","Informative"],["Sadaltager","Berwawasan","Knowledgeable"],["Iapetus","Jernih","Clear"],["Erinome","Jernih","Clear"]]],
+["Santai dan ramah",[["Aoede","Ringan","Breezy"],["Callirrhoe","Santai","Easy-going"],["Umbriel","Santai","Easy-going"],["Achird","Ramah","Friendly"],["Zubenelgenubi","Kasual","Casual"]]],
+["Halus dan lembut",[["Algieba","Mulus","Smooth"],["Despina","Mulus","Smooth"],["Achernar","Lembut","Soft"],["Vindemiatrix","Halus","Gentle"],["Sulafat","Hangat","Warm"],["Enceladus","Berdesah","Breathy"]]],
+["Berkarakter",[["Algenib","Serak","Gravelly"],["Gacrux","Dewasa","Mature"]]]];
+const VINFO={};GRP.forEach(g=>g[1].forEach(v=>VINFO[v[0]]=v[1]+" · "+v[2]));
+const EXPR=["Santai dan bercerita","Ceria dan ramah","Bersemangat","Tenang dan lembut","Serius dan tegas","Hangat dan akrab","Dramatis","Berbisik","Misterius","Seperti presenter berita","Haru dan sedih","Profesional"];
+let voice="Orus",au=null,lastUrl="",spd="normal";const smp={};
+const toWav=b64=>{const bin=atob(b64),pcm=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)pcm[i]=bin.charCodeAt(i);return URL.createObjectURL(wav(pcm))};
+const vdClose=()=>{$("#vdL").hidden=true;$("#vdB").setAttribute("aria-expanded","false")};
+function drawChips(){const cur=$("#sty").value.trim();$("#chips").innerHTML=EXPR.map(x=>`<button type="button" class="ec${x===cur?" on":""}" aria-pressed="${x===cur}">${esc(x)}</button>`).join("")}
+function drawVoices(){$("#vdN").textContent=voice;$("#vdD").textContent=VINFO[voice];
+$("#vdL").innerHTML=GRP.map(g=>`<li class="gh" role="presentation">${esc(g[0])}</li>`+g[1].map(v=>`<li class="vo" role="option" tabindex="0" data-v="${v[0]}" aria-selected="${v[0]===voice}"><span><b>${v[0]}</b><small>${esc(v[1]+" · "+v[2])}</small></span><button class="pl" type="button" data-p="${v[0]}" aria-label="Contoh suara ${v[0]}">&#9654; Contoh</button></li>`).join("")).join("");drawChips();cnt()}
+async function preview(v){const play=src=>{if(au)au.pause();au=new Audio(src);return au.play()};
+try{await play(smp[v]||"samples/"+v+".mp3")}catch(x){
+if(!GK){toast("Contoh belum tersedia. Simpan API key Google AI Studio untuk memutar contoh.");return}
+try{if(!smp[v]){toast("Membuat contoh suara...");smp[v]=toWav(await ttsCall("Halo, ini contoh suara "+v+".",v,""))}await play(smp[v])}catch(y){toast("Gagal: "+y.message)}}}
+$("#vdB").onclick=()=>{const o=$("#vdL").hidden;$("#vdL").hidden=!o;$("#vdB").setAttribute("aria-expanded",String(o));if(o){const a=$("#vdL [aria-selected=true]");if(a)a.scrollIntoView({block:"center"})}};
+$("#vdL").onclick=e=>{const p=e.target.closest("[data-p]"),li=e.target.closest(".vo");if(p){e.stopPropagation();preview(p.dataset.p);return}if(li){voice=li.dataset.v;vdClose();drawVoices()}};
+$("#vdL").onkeydown=e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("vo")){e.preventDefault();e.target.click()}};
+document.addEventListener("click",e=>{if(!e.target.closest("#vdW"))vdClose()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")vdClose()});
+$("#chips").onclick=e=>{const b=e.target.closest(".ec");if(!b)return;$("#sty").value=b.textContent;drawChips()};
+$("#sty").oninput=drawChips;
+$("#spd").onclick=e=>{const b=e.target.closest("button");if(!b)return;spd=b.dataset.s;[...$("#spd").children].forEach(x=>x.classList.toggle("on",x===b))};
+const styleStr=()=>[$("#sty").value.trim(),spd==="lambat"?"bicara pelan dan jelas":spd==="cepat"?"bicara cepat dan energik":""].filter(Boolean).join(", ");
+const cnt=()=>{const t=$("#txt").value.trim(),w=t?t.split(/\s+/).length:0;$("#cn").textContent=t.length+" / 1500 karakter, sekitar "+Math.max(1,Math.round(w/2.5))+" detik"};$("#txt").oninput=cnt;
+const wav=(pcm,rate=24000)=>{const h=new DataView(new ArrayBuffer(44)),s=(o,t)=>[...t].forEach((c,i)=>h.setUint8(o+i,c.charCodeAt(0)));s(0,"RIFF");h.setUint32(4,36+pcm.length,true);s(8,"WAVEfmt ");h.setUint32(16,16,true);h.setUint16(20,1,true);h.setUint16(22,1,true);h.setUint32(24,rate,true);h.setUint32(28,rate*2,true);h.setUint16(32,2,true);h.setUint16(34,16,true);s(36,"data");h.setUint32(40,pcm.length,true);return new Blob([h,pcm],{type:"audio/wav"})};
+$("#gen").onclick=async()=>{const text=$("#txt").value.trim(),o=$("#nOut"),b=$("#gen");if(!text){o.innerHTML='<span class="err">Tulis naskah dulu.</span>';return}
+b.disabled=true;b.textContent="Membuat suara...";o.textContent="";
+try{const bin=atob(await ttsCall(text,voice,styleStr())),pcm=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)pcm[i]=bin.charCodeAt(i);
+if(lastUrl)URL.revokeObjectURL(lastUrl);lastUrl=URL.createObjectURL(wav(pcm));
+o.innerHTML=`<b>Selesai. Suara ${esc(voice)}</b><audio controls src="${lastUrl}" style="width:100%;margin:8px 0"></audio><a class="btn" href="${lastUrl}" download="narasi-${esc(voice)}.wav">Unduh WAV</a>`}
+catch(e){o.innerHTML=`<span class="err">Gagal membuat suara: ${esc(!GK&&/environment|belum lengkap/i.test(e.message)?"Masukkan API key Google AI Studio-mu di atas.":e.message)}</span>`}
+b.disabled=false;b.textContent="Buat suara"};
+
+/* affiliasi */
+async function affLoad(){const box=$("#affBox");box.textContent="Memuat...";
+const {data:a,error}=await sb.from("affiliates").select("*").eq("user_id",user.id).maybeSingle();
+if(error){box.innerHTML='<span class="err">Gagal memuat data affiliasi. Pastikan file SQL sudah dijalankan.</span>';return}
+if(!a){box.innerHTML=`<h3>Gabung affiliasi</h3><p class="mut">Komisi ${C.AFF}% dari tiap pembelian Pro lewat linkmu.</p><label for="aw">Nomor WhatsApp</label><input id="aw" type="tel"><label for="ap">Tujuan pembayaran komisi (bank atau e-wallet)</label><input id="ap" type="text"><button class="btn p" id="aSend" type="button">Kirim pendaftaran</button><p class="msg" id="aM"></p>`;
+$("#aSend").onclick=async()=>{const wa=$("#aw").value.trim(),po=$("#ap").value.trim(),m=$("#aM");if(!wa||!po){m.className="msg err";m.textContent="Isi kedua kolom.";return}
+const r=await sb.from("affiliates").insert({user_id:user.id,email:user.email,wa,payout:po,status:"pending"});if(r.error){m.className="msg err";m.textContent="Gagal mengirim: "+r.error.message;return}affLoad()};return}
+if(a.status==="pending"){box.innerHTML="<h3>Menunggu persetujuan</h3><p class='mut'>Admin sedang memeriksa pendaftaranmu.</p>";return}
+if(a.status==="rejected"){box.innerHTML="<h3>Pendaftaran ditolak</h3><p class='mut'>Hubungi admin untuk info lebih lanjut.</p>";return}
+const link=location.origin+"/?ref="+a.code;
+const [cm,ck]=await Promise.all([sb.from("aff_commissions").select("amount,status,buyer_email,created_at").eq("affiliate_id",a.id).order("created_at",{ascending:false}),sb.rpc("my_aff_clicks")]);
+const rows=cm.data||[],sum=f=>rows.filter(f).reduce((t,c)=>t+c.amount,0);
+box.innerHTML=`<h3>Kodemu: ${esc(a.code)}</h3><label>Link affiliasi</label><div class="row"><input readonly id="aL" value="${esc(link)}" style="flex:1;margin:0"><button class="btn" id="aC" type="button">Salin</button></div>
+<p style="margin-top:14px">Klik: <b>${ck.data||0}</b> &nbsp; Pembelian: <b>${rows.length}</b> &nbsp; Belum dibayar: <b>${rp(sum(c=>c.status==="unpaid"))}</b> &nbsp; Sudah dibayar: <b>${rp(sum(c=>c.status==="paid"))}</b></p>
+<ul class="c">${rows.map(c=>`<li>${esc(c.buyer_email.replace(/^(.).*(@.*)$/,"$1***$2"))}: ${rp(c.amount)} (${c.status==="paid"?"dibayar":"belum dibayar"})</li>`).join("")||"<li class='mut'>Belum ada komisi.</li>"}</ul>`;
+$("#aC").onclick=()=>copy(link)}
+
+/* motion landing */
+(function(){const sleep=t=>new Promise(r=>setTimeout(r,t)),h=document.querySelector(".hero h1");
+h.innerHTML=h.textContent.split(" ").map((w,i)=>`<span style="--i:${i}">${esc(w)}</span>`).join(" ");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.2});
+document.querySelectorAll("#v-home .g3 .card").forEach((c,i)=>{c.classList.add("rv");c.style.transitionDelay=(i%3)*90+"ms";io.observe(c)});
+const u=$("#tU"),st=$("#tS"),P="Pakai skill Bedah 3D. Buat video 9:16 tentang kartu tol tanpa baterai.",ST=["Menulis 5 ide fun fact","Menyusun naskah VO","Membuat narasi suara","Render MP4 1080x1920"];
+st.innerHTML=ST.map(x=>`<li>${x}</li>`).join("");const L=[...st.children];
+if(matchMedia("(prefers-reduced-motion:reduce)").matches){u.textContent=P;L.forEach(l=>l.classList.add("on"));return}
+(async function loop(){for(;;){if($("#v-home").hidden||document.hidden){await sleep(800);continue}
+L.forEach(l=>l.classList.remove("on"));for(let i=1;i<=P.length;i++){u.innerHTML=esc(P.slice(0,i))+'<i class="caret"></i>';await sleep(38)}
+for(const l of L){await sleep(700);l.classList.add("on")}await sleep(3500)}})()})();
+</script></body></html>
